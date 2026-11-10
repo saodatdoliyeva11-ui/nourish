@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Nourish Project</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff6f9;--card:#fff;--ink:#6e5039;--soft:#a58a6a;--pink:#d9758c;--pk2:#fbdde6;--blue:#d3e8f6;--line:#f1c3d0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#2a1f25;--card:#37292f;--ink:#f3e2d3;--soft:#c9ad94;--pink:#f2a6b9;--pk2:#4b3340;--blue:#2f4552;--line:#6a4655}}
+:root[data-theme=dark]{--bg:#2a1f25;--card:#37292f;--ink:#f3e2d3;--soft:#c9ad94;--pink:#f2a6b9;--pk2:#4b3340;--blue:#2f4552;--line:#6a4655}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:600 16px/1.55 Nunito,system-ui,sans-serif;background-image:radial-gradient(circle at 10% 0,var(--pk2),transparent 40%),radial-gradient(circle at 95% 30%,var(--blue),transparent 35%)}
+.gh{height:14px;background:linear-gradient(90deg,#e08ea055 50%,transparent 50%),linear-gradient(#e08ea055 50%,transparent 50%);background-size:14px 14px}
+header{text-align:center;padding:22px 16px 6px}
+h1{font:400 clamp(34px,8vw,56px)/1.1 Pacifico,cursive;color:var(--pink);margin:0}
+.sub{color:var(--soft);font-weight:800;letter-spacing:.04em;font-size:14px}
+nav{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:12px}
+nav button,.chip,.btn{font:inherit;font-weight:800;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:99px;padding:8px 16px;cursor:pointer;transition:transform .2s,background .2s}
+nav button:hover,.chip:hover,.btn:hover{transform:translateY(-2px) rotate(-1deg);background:var(--pk2)}
+nav button.on,.chip.on,.btn.pri{background:var(--pink);border-color:var(--pink);color:#fff}
+:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+main{max-width:760px;margin:0 auto;padding:0 16px 80px}
+.sis{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:2px dashed var(--pink);border-radius:26px;padding:14px 16px;margin:6px 0 18px;box-shadow:0 0 0 6px var(--pk2)}
+.av{font-size:30px;flex:none}.sis p{margin:0;flex:1;transition:opacity .3s}.sis button{border:0;background:none;font-size:20px;cursor:pointer;color:var(--pink)}
+h2{font:400 28px Pacifico,cursive;color:var(--pink);margin:8px 0 4px}
+.days{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 10px}.days .chip{flex:none;padding:6px 14px}
+.card{background:var(--card);border:2px solid var(--line);border-radius:24px;padding:16px;margin:12px 0;position:relative;animation:pop .35s both}
+@keyframes pop{from{transform:scale(.97);opacity:0}}
+.card.ok{background:linear-gradient(var(--card),var(--pk2))}
+.t{color:var(--soft);font-weight:800;font-size:13px}.card h3{margin:2px 0 4px;font-size:20px}
+.fav{position:absolute;right:12px;top:10px;border:0;background:none;font-size:22px;cursor:pointer;transition:transform .25s}.fav.on{transform:scale(1.25)}
+details{margin:8px 0}summary{cursor:pointer;color:var(--pink);font-weight:800}
+.ing{display:flex;flex-wrap:wrap;gap:6px;padding:0;list-style:none;margin:8px 0}.ing li{background:var(--pk2);border-radius:99px;padding:2px 12px;font-size:14px}
+.links a{color:var(--pink);margin-right:14px;font-weight:800}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.sec{font-weight:800;color:var(--soft);margin:18px 0 4px}
+.it{display:flex;align-items:center;gap:12px;padding:8px 12px;background:var(--card);border:2px solid var(--line);border-radius:18px;margin:6px 0;cursor:pointer}
+.it input{display:none}.bx{width:26px;height:26px;border:2px solid var(--pink);border-radius:9px;display:grid;place-items:center;flex:none;color:transparent;transition:.25s}
+.it input:checked+.bx{background:var(--pink);color:#fff;transform:rotate(360deg) scale(1.1)}
+.it input:checked~.nm{text-decoration:line-through;opacity:.5}.tag{margin-left:auto;font-size:12px;color:var(--soft)}
+.bar{height:12px;background:var(--pk2);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--pink);transition:width .5s}
+form{display:grid;gap:8px;background:var(--card);border:2px solid var(--line);border-radius:24px;padding:16px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:8px 12px;width:100%}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:14px}
+.ph{background:var(--card);border:8px solid var(--card);outline:2px solid var(--line);border-radius:6px;box-shadow:0 6px 16px #d9758c22;transform:rotate(var(--r,0deg));transition:.25s}
+.ph:hover{transform:rotate(0) scale(1.03)}.ph img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:2px}.ph div{padding:6px 2px;font-size:14px}
+.pill{background:var(--blue);border-radius:99px;padding:0 10px;font-size:12px;font-weight:800}
+.kn{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:6px 16px;margin:10px 0}.kn summary{font-size:18px;padding:8px 0;color:var(--ink)}
+.kn p{margin:4px 0 10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}.stat{background:var(--card);border:2px solid var(--line);border-radius:22px;text-align:center;padding:12px}
+.stat b{display:block;font:400 34px Pacifico;color:var(--pink)}
+.fl{position:fixed;pointer-events:none;font-size:26px;animation:up 1.4s ease-out forwards;z-index:9}
+@keyframes up{to{transform:translateY(-160px) rotate(25deg);opacity:0}}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;opacity:0;transition:.3s;z-index:10}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="gh"></div>
+<header><h1>The Nourish Project</h1><div class="sub">your tiny food world, with a big sister in it 🎀</div></header>
+<nav id="nav"></nav>
+<main>
+<div class="sis"><span class="av">🎀</span><p id="say"></p><button id="more" title="Another one" aria-label="Another message">↻</button></div>
+<section id="v"></section>
+</main>
+<div id="toast"></div>
+<script>
+const $=s=>document.querySelector(s),esc=t=>String(t||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+let S={done:[],fav:{},shop:{},photos:[]};
+try{Object.assign(S,JSON.parse(localStorage.getItem("nourish")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("nourish",JSON.stringify(S));return true}catch(e){toast("Storage is full, babe. Delete a few old photos to make room.");return false}};
+const toast=t=>{const e=$("#toast");e.textContent=t;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,2600)};
+const today=()=>new Date().toLocaleDateString("en-CA");
+const wk=()=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.toLocaleDateString("en-CA")};
+// Big Sister
+const M={morn:["Good morning, sunshine. Breakfast first, world domination second. I didn’t make the rules.","Morning, babe. Your stomach has been drafting a strongly worded email since 6 a.m. Let’s reply with oatmeal.","Rise and shine, darling. Nobody conquered anything on an empty stomach, and I’ve checked."],
+noon:["Girl, it’s lunch o’clock. Did lunch personally offend you, or are we ignoring biology today? The world can wait 30 minutes.","Honey, your brain is running on 3% and vibes. Plate. Now.","Your dreams are important, darling. So is the person who’s supposed to achieve them. Let’s get you something to eat."],
+aft:["Late lunch? We don’t judge, we simply feed. Eat first, apologise to nobody.","Sweetheart, productivity is cute, but have you considered being a well-fed human being?"],
+eve:["Dinner o’clock, darling. Candles optional, spoon mandatory.","Take your time tonight. Nothing delicious was ever made at maximum speed.","The day was long. The soup is patient. Let’s go."],
+night:["Still up, babe? Go be kind to whatever’s in that fridge, and to yourself while you’re at it.","It’s late and you’re hungry, which is a solvable problem. Toast counts. Toast always counts."],
+menu:["Four meals, zero guilt. Skipped one? Plot twist: we simply eat the next one.","Swapped an ingredient? Honey, that’s not a mistake, that’s creative direction.","Tap a card. I’ve already forgiven you for any substitutions."],
+shop:["Look at you, running a whole household. The grocery store should be expecting royalty.","Shopping list, assemble. Cucumbers first, tragedy never.","Forgot something? The corner shop is basically a fridge with better lighting."],
+tick:["Tick. Another one wrestled out of the chaos.","Onion secured. Bold. I love that for you.","Look at that, a woman with a plan and a basket."],
+shopDone:["EVERY item. The cart has never been so proud. Go home and put on something with an apron."],
+gal:["Show me the food, darling. Wonky is welcome. Wonky is character.","This is your cookbook in the making. No pressure, just a publisher waiting by the phone."],
+up:["EXCUSE ME? Since when do we run a five-star restaurant in this kitchen? I need a photograph, a recipe and an interview with the chef.","Another masterpiece enters the collection. Honestly, darling, we need our own cookbook.","I’m not crying, you’re crying. That plate has main-character energy.","The camera loved it. The fridge is jealous. Archive saved, sis."],
+learn:["Nutrition, but make it gossip. Tap an ingredient and I’ll tell you what it’s been up to inside you.","Food facts without the lecture. Think of me as your slightly dramatic encyclopaedia."],
+rec:["Look at this little museum of your good decisions.","This isn’t a report, babe. It’s a scrapbook with snacks."],
+done:["Darling, the kitchen has witnessed greatness today. Please document this historical event.","You made food. With your hands. For yourself. That’s self-respect with garlic.","Dishes can wait. Sit down and enjoy it first. That’s the whole point.","Standing ovation, from me and a slightly confused spatula."],
+bf:["Now THAT is a breakfast choice. Your future self just sent a thank-you card.","Breakfast before the world gets its hands on you. Iconic."],
+fav:["Noted. That one’s staying in the family.","Ooh, a favourite. It’s going on the fridge of my heart."],
+lazy:["Honey, the couch has made some very convincing arguments, but it cannot provide dinner. Here’s the kindest, laziest thing on today’s menu.","Zero shame. This one asks very little and gives a lot back. Tiny effort, big hug."],
+newwk:["Fresh week, clean slate, same fabulous you. Pick a few recipes you’re curious about and ignore the rest."]};
+const Q={},L={};
+function pick(c){const a=M[c];if(!Q[c]||!Q[c].length){Q[c]=a.map((_,i)=>i).sort(()=>Math.random()-.5);if(Q[c][0]===L[c]&&a.length>1)Q[c].reverse()}return a[L[c]=Q[c].pop()]}
+function say(c){const p=$("#say");p.style.opacity=0;setTimeout(()=>{p.textContent=pick(c);p.style.opacity=1},200);cur=c}
+let cur="menu";
+const hr=()=>{const h=new Date().getHours();return h<11?"morn":h<15?"noon":h<18?"aft":h<22?"eve":"night"};
+function fly(e,em){const x=(e&&e.clientX)||innerWidth/2,y=(e&&e.clientY)||innerHeight/2;for(let i=0;i<7;i++){const s=document.createElement("span");s.className="fl";s.textContent=em[i%em.length];s.style.left=x+(Math.random()*80-40)+"px";s.style.top=y+"px";s.style.animationDelay=i*70+"ms";document.body.append(s);setTimeout(()=>s.remove(),1800)}}
+// Data: [name, minutes, "amount~ingredient~cat;...", method]  cats: P produce, D dairy & eggs, M meat & fish, G grains & legumes, S pantry, seeds & spices
+const CAT={P:"Fresh produce",D:"Dairy & eggs",M:"Meat & fish",G:"Grains & legumes",S:"Pantry, seeds & spices"};
+const SL=["Breakfast · 07:00–08:00","At university · by 13:30","Lunch · 14:00–15:00","Dinner · 19:00–21:00"];
+const DAYS=[["Mon","A fresh beginning",[
+["Banana walnut oatmeal",10,"½ cup~oats~G;200 ml~milk~D;1~bananas~P;1 tbsp~walnuts~S;1 tsp~chia seeds~S;pinch~cinnamon~S;drizzle~honey~S","Simmer oats in milk 5–7 min, stirring. Top with banana, walnuts, chia, cinnamon, honey."],
+["Egg & cheese sandwich",15,"2 slices~bread~G;2~eggs~D;1 slice~cheese~D;1~tomatoes~P;few~lettuce~P;little~butter~D","Boil eggs 9–10 min, mash. Layer on buttered bread with cheese, tomato, lettuce. Wrap."],
+["Homemade chicken plov",50,"120 g~chicken~M;¾ cup~rice~G;1~carrots~P;½~onions~P;2 tbsp~sunflower oil~S;1 tsp~cumin~S","Wash rice. Fry onion, brown chicken, add carrot, cumin, water. Add rice and hot water, cover, cook low until tender."],
+["Red lentil soup",30,"½ cup~red lentils~G;½~onions~P;1~carrots~P;1~potatoes~P;1 tsp~oil~S;1~lemons~P","Soften onion, add chopped veg, lentils, water. Simmer 20–25 min. Season, squeeze lemon. Chunky, no blender."]]],
+["Tue","Warm and nourishing",[
+["Spinach & cheese omelette",15,"2~eggs~D;handful~spinach~P;30 g~cheese~D;1~tomatoes~P;2 slices~bread~G;little~oil~S","Wilt spinach, pour in beaten eggs, add cheese, cover until set. Serve with bread and tomato."],
+["Banana chia yogurt jar",5,"180 g~plain yogurt~D;1~bananas~P;1 tbsp~chia seeds~S;1 tbsp~walnuts~S;drizzle~honey~S","Stir chia into yogurt, top with banana, walnuts, honey. Chill overnight, pack with an ice pack."],
+["Beef & buckwheat bowl",40,"120 g~beef~M;¾ cup~buckwheat~G;½~onions~P;1~carrots~P;1 tsp~oil~S","Boil buckwheat. Brown beef and onion, add carrot and water, simmer until tender. Serve over buckwheat."],
+["Moshxo’rda",40,"⅓ cup~mung beans (mosh)~G;2 tbsp~rice~G;1~carrots~P;½~onions~P;1~tomatoes~P;little~oil~S;handful~cilantro & dill~P;pinch~cumin~S","Fry onion, carrot, tomato. Add mosh and water until softening, then rice. Cook until tender, finish with herbs and a spoon of suzma."]]],
+["Wed","Simple but delicious",[
+["Apple cinnamon overnight oats",5,"½ cup~oats~G;150 ml~milk~D;½~apples~P;1 tbsp~walnuts~S;1 tsp~flaxseeds~S;pinch~cinnamon~S","Mix oats, milk, flax in a jar overnight. Top with apple, walnuts, cinnamon."],
+["Peanut butter banana toast",5,"2 slices~bread~G;2 tbsp~peanut butter~S;1~bananas~P;pinch~cinnamon~S;1~apples~P","Toast, spread peanut butter, add banana and cinnamon. Pack the apple separately."],
+["Chicken & potato stew",45,"130 g~chicken~M;2~potatoes~P;1~carrots~P;½~onions~P;½~bell peppers~P;1~tomatoes~P;1 tbsp~oil~S","Brown onion and chicken, add veg and water to half-cover. Cover, simmer 25–30 min until fully cooked."],
+["Chickpea vegetable stew",25,"¾ cup~chickpeas (cooked)~G;1~tomatoes~P;½~onions~P;½~bell peppers~P;1~carrots~P;1 tsp~oil~S;pinch~paprika~S;handful~parsley~P","Soften onion, carrot, pepper, tomato. Add chickpeas and a splash of water, simmer 15–20 min. Parsley on top."]]],
+["Thu","A little variety",[
+["Savory suzma toast",10,"2 slices~bread~G;3 tbsp~suzma~D;1~eggs~D;½~cucumbers~P;handful~cilantro & dill~P","Toast bread, spread suzma mixed with herbs, top with sliced boiled egg and cucumber."],
+["Egg, cheese & fruit box",15,"2~eggs~D;40 g~cheese~D;1~apples~P;handful~walnuts~S;2 slices~bread~G","Boil eggs, cube cheese, slice fruit. Pack in sections with bread and walnuts."],
+["Beef & vegetable shurpa",60,"130 g~beef~M;1~potatoes~P;1~carrots~P;½~onions~P;1~tomatoes~P;1 tsp~cumin~S;handful~cilantro & dill~P","Simmer beef, skimming foam, until nearly tender. Add veg, then potato. Cook until soft, add cilantro."],
+["Lemon fish with potatoes",35,"150 g~fish fillet~M;2~potatoes~P;1 head~broccoli~P;½~lemons~P;1 tbsp~olive oil~S","Boil potato wedges 8 min. Bake with fish, oil, lemon at 190°C for 15–20 min until fish is cooked. Steam the broccoli."]]],
+["Fri","Colourful food day",[
+["Tomato & cheese scramble",15,"2~eggs~D;1~tomatoes~P;½~bell peppers~P;30 g~cheese~D;2 slices~bread~G;little~oil~S;handful~parsley~P","Soften pepper and tomato, stir in eggs and cheese until set. Serve with bread and parsley."],
+["Apple walnut yogurt",5,"200 g~plain yogurt~D;½~apples~P;1 tbsp~walnuts~S;1 tbsp~raisins~S;1 tsp~chia seeds~S;pinch~cinnamon~S","Layer everything in a sealed jar, chill until you leave."],
+["Red bean tomato stew",30,"¾ cup~red beans (cooked)~G;½~onions~P;1~carrots~P;1~tomatoes~P;½~bell peppers~P;¾ cup~rice~G;1 tbsp~oil~S","Soften veg, add beans, simmer 15 min, serve with rice. Rinse canned beans; raw kidney beans must be soaked and boiled properly."],
+["Chicken spinach pasta",25,"90 g~pasta~G;110 g~chicken~M;handful~spinach~P;1~tomatoes~P;1 clove~garlic~P;1 tbsp~olive oil~S;little~cheese~D","Boil pasta. Cook chicken through, add garlic, tomato, spinach, then pasta. Finish with cheese."]]],
+["Sat","Cozy weekend",[
+["Cottage cheese banana bowl",5,"190 g~cottage cheese~D;1~bananas~P;1 tbsp~pumpkin seeds~S;1 tbsp~walnuts~S;drizzle~honey~S;pinch~cinnamon~S","Bowl, banana, seeds, nuts, cinnamon, honey. Done."],
+["Potato & egg sandwich",20,"2 slices~bread~G;1~eggs~D;1~potatoes~P;2 tbsp~suzma~D;sprig~cilantro & dill~P;½~cucumbers~P","Boil egg and potato, mash with suzma and dill, season, spread on bread with cucumber."],
+["Moshkichiri",45,"⅓ cup~mung beans (mosh)~G;⅓ cup~rice~G;½~onions~P;1~carrots~P;1~tomatoes~P;100 g~beef~M;1 tbsp~oil~S;1 tsp~cumin~S","Brown onion and beef, add carrot, tomato, mosh and water. Add rice when mosh is half-tender; cook until both are soft."],
+["Pumpkin & lentil soup",30,"150 g~pumpkin~P;⅓ cup~red lentils~G;1~carrots~P;½~onions~P;1 tsp~oil~S;1 tbsp~pumpkin seeds~S","Soften onion, add pumpkin, carrot, lentils, water. Simmer 20–25 min. Mash a little with a fork, top with seeds."]]],
+["Sun","Traditional comfort food",[
+["Uzbek breakfast plate",10,"2~eggs~D;40 g~cheese~D;2 slices~bread~G;1~tomatoes~P;½~cucumbers~P;handful~cilantro & dill~P;little~butter~D","Boil eggs, arrange everything on a plate, pretend you’re at a very good dastarkhan."],
+["Oat & date bites",15,"½ cup~oats~G;4~dates~S;1 tbsp~peanut butter~S;1 tbsp~walnuts~S;1 tsp~chia seeds~S","Chop dates finely, mash with a fork, mix in the rest, roll into balls, chill. No blender."],
+["Traditional Uzbek plov",60,"130 g~beef~M;¾ cup~rice~G;1~carrots~P;½~onions~P;2 tbsp~sunflower oil~S;1 tsp~cumin~S","Brown onion and beef, add carrot, cumin, water; cook beef tender. Add rice and hot water, cover, cook until done. Tomato-cucumber salad on the side."],
+["Green lentil vegetable soup",40,"½ cup~green lentils~G;1~carrots~P;½~onions~P;1~tomatoes~P;1~potatoes~P;1 tsp~oil~S;handful~parsley~P;1~lemons~P","Soften onion, add carrot, tomato, lentils, potato, water. Simmer 30–40 min. Finish with parsley and lemon."]]]];
+const FULL=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const mealOf=id=>{const[d,m]=id.split("-");return DAYS[d][2][m]};
+const KN=[["Oats","Whole grain rich in fibre (beta-glucan), with magnesium, iron and B vitamins. The fibre helps you feel full for longer.","Porridge, overnight jars, energy bites.","Banana, apple, walnuts, cinnamon."],
+["Eggs","A complete protein, with vitamin B12, choline, vitamin D and selenium.","Boil 9–10 min, or scramble gently on low heat.","Spinach, tomato, cheese, bread."],
+["Lentils, beans & mosh","Plant protein, fibre, folate, iron and potassium. Red lentils melt into soup without soaking.","Soups, stews, moshkichiri.","Lemon (vitamin C helps your body absorb plant iron), carrot, cumin."],
+["Spinach","Vitamin K, folate, carotenoids and magnesium.","Add at the very end so it just wilts.","Eggs, cheese, lemon, pasta."],
+["Banana","Potassium, vitamin B6 and quick-release carbohydrates, handy before lectures.","Sliced on oats, toast or yogurt.","Peanut butter, oats, cinnamon."],
+["Walnuts","Healthy fats including plant omega-3 (ALA), plus magnesium.","Sprinkle on top; toast lightly for more flavour.","Apple, yogurt, honey, dates."],
+["Chia & flaxseeds","Fibre and plant omega-3. Chia swells into a gel in liquid; ground flax is easier to digest than whole.","Stir into yogurt or oats the night before.","Yogurt, oats, fruit."],
+["Yogurt, suzma & cottage cheese","Protein and calcium. Plain yogurt contains live cultures.","Sweet with fruit, savoury with herbs.","Cucumber, dill, banana, walnuts."],
+["Carrots","Beta-carotene, which your body turns into vitamin A. A little oil helps you absorb it.","Fry gently with onion as a base.","Onion, rice, cumin, beef."],
+["Buckwheat","A gluten-free seed with fibre, magnesium, manganese and protein.","Rinse, then simmer until fluffy.","Beef, onion, egg."],
+["Pumpkin & pumpkin seeds","Pumpkin offers beta-carotene and potassium; the seeds bring zinc and magnesium.","Cubes in soup, seeds toasted on top.","Red lentils, carrot, cinnamon."],
+["Lemon","Vitamin C, plus acidity that brightens food so it needs less salt.","Squeeze at the end, not the beginning.","Lentils, fish, herbs, tea."]];
+// App
+let tab="menu",day=(new Date().getDay()+6)%7,editId=null;
+const TABS=[["menu","Menu"],["shop","Shopping"],["gal","My kitchen"],["learn","Ingredients"],["rec","This week"]];
+function nav(){$("#nav").innerHTML=TABS.map(t=>`<button class="${t[0]==tab?"on":""}" data-a="tab" data-v="${t[0]}">${t[1]}</button>`).join("")}
+const doneToday=id=>S.done.some(e=>e.id==id&&e.date==today());
+function menu(){const D=DAYS[day];return`<div class="days">${DAYS.map((d,i)=>`<button class="chip ${i==day?"on":""}" data-a="day" data-v="${i}">${d[0]}</button>`).join("")}</div>
+<h2>${FULL[day]}</h2><div class="sub">${D[1]}</div>
+${D[2].map((m,i)=>{const id=day+"-"+i,q=encodeURIComponent(m[0]);return`<article class="card ${doneToday(id)?"ok":""}"><button class="fav ${S.fav[id]?"on":""}" data-a="fav" data-v="${id}" aria-label="Favourite">${S.fav[id]?"💗":"🤍"}</button>
+<div class="t">${SL[i]} · ⏱ ${m[1]} min</div><h3>${m[0]}</h3>
+<details><summary>Recipe</summary><ul class="ing">${m[2].split(";").map(x=>x.split("~")).map(x=>`<li>${x[0]} ${x[1]}</li>`).join("")}</ul><p>${m[3]}</p>
+<div class="links"><a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=${q}+recipe">▶ YouTube</a><a target="_blank" rel="noopener" href="https://www.tiktok.com/search?q=${q}">♪ TikTok</a><a target="_blank" rel="noopener" href="https://www.pinterest.com/search/pins/?q=${q}+aesthetic">📌 Pinterest</a></div></details>
+<div class="row"><button class="btn ${doneToday(id)?"pri":""}" data-a="done" data-v="${id}">${doneToday(id)?"Cooked ✓":"I cooked this"}</button></div></article>`}).join("")}
+<div class="row"><button class="btn" data-a="lazy">I don’t feel like cooking</button></div>`}
+function shopData(){const m={};DAYS.forEach((d,di)=>d[2].forEach(me=>me[2].split(";").forEach(x=>{const[,n,c]=x.split("~");(m[n]=m[n]||{c,d:new Set()}).d.add(d[0])})));return m}
+function shop(){const m=shopData(),names=Object.keys(m),n=names.filter(k=>S.shop[k]).length;
+return`<h2>Shopping list</h2><div class="bar"><i style="width:${n/names.length*100}%"></i></div><div class="sub">${n} of ${names.length} in the basket</div>`+Object.keys(CAT).map(c=>{const l=names.filter(k=>m[k].c==c).sort();return`<div class="sec">${CAT[c]}</div>`+l.map(k=>`<label class="it"><input type="checkbox" data-a="shop" data-v="${esc(k)}" ${S.shop[k]?"checked":""}><span class="bx">✓</span><span class="nm">${k}</span><span class="tag">${[...m[k].d].join(" ")}</span></label>`).join("")}).join("")+`<div class="row"><button class="btn" data-a="reset">Start a new list</button></div>`}
+function gal(){const e=S.photos.find(p=>p.id==editId)||{};return`<h2>My kitchen</h2><form id="f"><b>${editId?"Edit this memory":"Add a meal you made"}</b>
+<input type="file" accept="image/*" id="img" ${editId?"":"required"}><input id="nm" placeholder="Meal name" required value="${esc(e.name)}">
+<input type="date" id="dt" value="${e.date||today()}"><select id="ct">${["breakfast","lunch","dinner","snack","drink"].map(c=>`<option ${e.cat==c?"selected":""}>${c}</option>`).join("")}</select>
+<textarea id="nt" rows="2" placeholder="A personal note (how did it taste? what would you change?)">${esc(e.note)}</textarea><input id="lk" type="url" placeholder="Recipe or video link (optional)" value="${esc(e.link)}">
+<div class="row"><button class="btn pri" type="submit">${editId?"Save changes":"Save to my kitchen"}</button>${editId?`<button class="btn" type="button" data-a="cancel">Cancel</button>`:""}</div></form>
+<div class="grid">${S.photos.length?[...S.photos].sort((a,b)=>b.date.localeCompare(a.date)).map((p,i)=>`<div class="ph" style="--r:${i%2?1.5:-1.5}deg"><img src="${p.img}" alt="${esc(p.name)}"><div><b>${esc(p.name)}</b> <span class="pill">${p.cat}</span><br><small>${p.date}</small>${p.note?`<br>${esc(p.note)}`:""}${p.link&&/^https?:/.test(p.link)?`<br><a target="_blank" rel="noopener" href="${esc(p.link)}">Recipe / video</a>`:""}<div class="row"><button class="chip" data-a="edit" data-v="${p.id}">Edit</button><button class="chip" data-a="del" data-v="${p.id}">Delete</button></div></div></div>`).join(""):`<p>Nothing here yet. The first photo is always the hardest and the cutest.</p>`}</div>`}
+function learn(){return`<h2>Ingredients, explained kindly</h2>`+KN.map(k=>`<details class="kn"><summary>${k[0]}</summary><p>${k[1]}</p><p><b>Cook with it:</b> ${k[2]}<br><b>Loves:</b> ${k[3]}</p></details>`).join("")+`<p class="sub">General food information, not medical advice.</p>`}
+function rec(){const w=wk(),cw=S.done.filter(e=>e.date>=w),ids=[...new Set(cw.map(e=>e.id))],fresh=ids.filter(id=>!S.done.some(e=>e.id==id&&e.date<w)),ph=S.photos.filter(p=>p.date>=w),fv=Object.keys(S.fav).filter(k=>S.fav[k]);
+const ms=[[S.done.length>=1,"🍳 First meal cooked"],[cw.length>=5,"🌟 Five meals in one week"],[ids.length>=3&&fresh.length>=3,"🧭 Tried three new recipes"],[S.photos.length>=1,"📸 Started the archive"],[S.photos.length>=5,"📚 Five dishes in the cookbook"],[cw.some(e=>e.id.endsWith("-0")),"🌅 Had a proper breakfast"]].filter(x=>x[0]);
+return`<h2>This week’s memories</h2><div class="stats"><div class="stat"><b>${cw.length}</b>meals cooked</div><div class="stat"><b>${fresh.length}</b>new recipes</div><div class="stat"><b>${ph.length}</b>photos</div><div class="stat"><b>${fv.length}</b>favourites</div></div>
+<div class="sec">On the table</div><p>${ids.length?ids.map(id=>mealOf(id)[0]).join(" · "):"Nothing logged yet. The week is a blank plate, in the nicest way."}</p>
+<div class="sec">Favourites</div><p>${fv.length?fv.map(id=>"💗 "+mealOf(id)[0]).join("<br>"):"Tap the heart on a recipe you love."}</p>
+<div class="sec">Little achievements</div><p>${ms.length?ms.map(x=>x[1]).join("<br>"):"They’ll appear as you cook. No rush."}</p>
+<div class="sec">Photo wall</div><div class="grid">${ph.map(p=>`<div class="ph"><img src="${p.img}" alt="${esc(p.name)}"></div>`).join("")}</div>`}
+function render(){nav();$("#v").innerHTML={menu,shop,gal,learn,rec}[tab]()}
+function go(t){tab=t;render();say(t==="menu"?(new Date().getDay()==1?"newwk":"menu"):t)}
+function shrink(f,cb){const r=new FileReader();r.onload=()=>{const i=new Image();i.onload=()=>{const s=Math.min(1,720/Math.max(i.width,i.height)),c=document.createElement("canvas");c.width=i.width*s;c.height=i.height*s;c.getContext("2d").drawImage(i,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.72))};i.src=r.result};r.readAsDataURL(f)}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a,v=b.dataset.v;
+if(a=="tab")go(v);
+else if(a=="day"){day=+v;render()}
+else if(a=="fav"){S.fav[v]=!S.fav[v];save();render();if(S.fav[v]){say("fav");fly(e,["💗"])}}
+else if(a=="done"){const had=doneToday(v);S.done=S.done.filter(x=>!(x.id==v&&x.date==today()));if(!had){S.done.push({id:v,date:today()});fly(e,["🎀","✨","🍓"]);say(v.endsWith("-0")&&Math.random()<.6?"bf":"done")}save();render()}
+else if(a=="lazy"){const l=DAYS[day][2].map((m,i)=>[m[1],i]).sort((x,y)=>x[0]-y[0])[0][1];say("lazy");toast("Easiest today: "+DAYS[day][2][l][0])}
+else if(a=="reset"){S.shop={};save();render()}
+else if(a=="edit"){editId=v;render();scrollTo(0,0)}
+else if(a=="cancel"){editId=null;render()}
+else if(a=="del"){if(confirm("Delete this memory?")){S.photos=S.photos.filter(p=>p.id!=v);save();render()}}
+else if(a=="shop"){}});
+document.addEventListener("change",e=>{const i=e.target;if(i.dataset.a!="shop")return;S.shop[i.dataset.v]=i.checked;save();const t=Object.keys(shopData()),n=t.filter(k=>S.shop[k]).length;$(".bar i").style.width=n/t.length*100+"%";$(".bar+.sub").textContent=n+" of "+t.length+" in the basket";
+if(n==t.length){say("shopDone");fly(null,["🛒","✨","🎀"])}else if(i.checked&&Math.random()<.3)say("tick")});
+document.addEventListener("submit",e=>{e.preventDefault();const f=$("#img").files[0],g=x=>$("#"+x).value;
+const fin=img=>{const old=S.photos.find(p=>p.id==editId),o={id:editId||Date.now(),name:g("nm"),date:g("dt"),cat:g("ct"),note:g("nt"),link:g("lk"),img:img||old.img};
+if(editId)S.photos=S.photos.map(p=>p.id==editId?o:p);else S.photos.push(o);
+if(!save()){if(!editId)S.photos.pop();return}editId=null;render();say("up");fly(null,["📸","💗","✨","🍓"])};
+f?shrink(f,fin):fin()});
+$("#more").onclick=()=>say(cur);
+render();say(hr());
+</script></body></html>
